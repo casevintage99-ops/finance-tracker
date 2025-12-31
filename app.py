@@ -4,6 +4,38 @@ import pandas as pd
 from datetime import date
 import os
 
+# ✅ TARUH CSS DI SINI
+st.markdown("""
+<style>
+.block-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    max-width: 980px;
+}
+
+[data-testid="stVerticalBlockBorderWrapper"] {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 18px;
+    padding: 20px 20px 8px 20px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+    margin-bottom: 20px;
+}
+
+.stButton > button,
+.stDownloadButton > button {
+    border-radius: 14px !important;
+    padding: 0.55rem 1.1rem !important;
+    border: 1px solid rgba(255,255,255,0.12) !important;
+}
+
+input, textarea, select {
+    border-radius: 12px !important;
+}
+</style>
+""", unsafe_allow_html=True)
+# ✅ SAMPAI SINI
+
 st.set_page_config(page_title="Finance Tracker", page_icon="💸", layout="centered")
 
 FILE = "transaksi.csv"
@@ -22,8 +54,11 @@ def save_data(df):
 
 df = load_data()
 
-st.title("💸 Finance Tracker")
-st.caption("simple • clean • monthly")
+st.markdown("""
+<h1 style="margin-bottom:0.2rem;">💸 Finance Tracker</h1>
+<p style="opacity:0.7; margin-top:0;">simple • clean • monthly</p>
+""", unsafe_allow_html=True)
+
 
 tab1, tab2 = st.tabs(["➕ Input", "📊 Ringkasan"])
 
@@ -52,6 +87,7 @@ with tab1:
             st.success("Tersimpan ✅")
 
 with tab2:
+    st.markdown("<br>", unsafe_allow_html=True)
     st.subheader("📊 Ringkasan Bulanan")
 
     if df.empty:
